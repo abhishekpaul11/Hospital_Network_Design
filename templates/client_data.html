@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/server_home.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div style="background-color: darkgreen;height: 130px;width: auto;margin: -10px;text-align: center;"><text style="color: white;font-size: 100px;">XYZ HOSPITAL</text></div>
+    <div style="margin-top: 60px;"><text style="color: black;font-size: 40px;margin-left: 37%;font-family: sans-serif;font-weight: bold;">CLIENT ID: {{cid}}</text></div>
+    <div style="margin-top: 40px;"><text style="color: black;font-size: 40px;margin-left: 38%;font-family: sans-serif;font-weight: bold;">PATIENT DETAILS</text></div>
+    <table id="details" style="width: 80%;margin-left: 10%;margin-top: 20px;">
+        <tr style="background-color: #3CB371;">
+            <td><text id="header">Patient ID</text></td>
+            <td><text id="header">Name</text></td>
+            <td><text id="header">Age</text></td>
+            <td><text id="header">Contact</text></td>
+            <td><text id="header">Address</text></td>
+            <td><text id="header">Medical Details</text></td>
+        </tr>
+        {% for i in dat%}
+            <tr>
+                {% for j in range(6) %}
+                    <td><text id="data">{{i[j]}}</text></td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

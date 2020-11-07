@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/server_home.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div style="background-color: darkgreen;height: 130px;width: auto;margin: -10px;text-align: center;"><text style="color: white;font-size: 100px;">XYZ HOSPITAL</text></div>
+    <div style="margin-top: 60px;"><text style="color: black;font-size: 40px;margin-left: 38%;font-family: sans-serif;font-weight: bold;">PATIENT DETAILS</text></div>
+    <table id="details" style="width: 80%;margin-left: 10%;margin-top: 20px;">
+        <tr style="background-color: #3CB371;">
+            <td><text id="header">Patient ID</text></td>
+            <td><text id="header">Name</text></td>
+            <td><text id="header">Age</text></td>
+            <td><text id="header">Contact</text></td>
+            <td><text id="header">Address</text></td>
+            <td><text id="header">Medical Details</text></td>
+            <td><text id="header">X</text></td>
+        </tr>
+        {% for i in dat%}
+            <tr>
+                {% for j in range(6) %}
+                    <td><text id="data">{{i[j]}}</text></td>
+                {% endfor %}
+                    <td><a href='{{ url_for("delete",id=i[0]) }}' style="text-decoration: none;"><text id="data" style="color: red;">X</text></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <button id="press" onclick="add()" style="padding: 2px;border-radius: 5px;background-color: darkgreen;width: 15%;margin-left: 42.5%;height: 50px;margin-top: 20px;"><text style="font-size: 25px;font-family: sans-serif;font-weight: bold;color: white;">ADD ENTRY</text></button>
+    <form action='/add/' method="POST">
+        <div id="add" style="margin-top: 30px;width:40%;background-color: lightgreen;text-align: center;margin-left: 30%;padding-bottom: 20px;padding-top: 10px;display: none;">
+            <text style="color: black;font-size: 30px;font-family: sans-serif;font-weight: bold;">Name</text><br>
+            <input required style="height: 30px;width: 40%;margin-top: 5px;font-size: 25px;font-family: sans-serif;text-align: center;" name="nam"><br><br>
+            <text style="color: black;font-size: 30px;font-family: sans-serif;font-weight: bold;">Age</text><br>
+            <input required type="number" style="height: 30px;width: 40%;margin-top: 5px;font-size: 25px;font-family: sans-serif;text-align: center;" name="age"><br><br>
+            <text style="color: black;font-size: 30px;font-family: sans-serif;font-weight: bold;">Contact</text><br>
+            <input required type="number" style="height: 30px;width: 40%;margin-top: 5px;font-size: 25px;font-family: sans-serif;text-align: center;" name="con"><br><br>
+            <text style="color: black;font-size: 30px;font-family: sans-serif;font-weight: bold;">Address</text><br>
+            <textarea required style="height: 60px;width: 40%;margin-top: 5px;font-size: 25px;font-family: sans-serif;text-align: center;resize: none;" name="add"></textarea><br><br>
+            <text style="color: black;font-size: 30px;font-family: sans-serif;font-weight: bold;">Medical Details</text><br>
+            <textarea required style="height: 60px;width: 40%;margin-top: 5px;font-size: 25px;font-family: sans-serif;text-align: center;resize: none;" name="med"></textarea><br><br>
+            <button onclick="cancel()" type="reset" style="padding: 2px;border-radius: 5px;background-color: orange;width: 25%;margin: 10px;"><text style="font-size: 25px;font-family: sans-serif;font-weight: bold;color: white;">CANCEL</text></button>
+            <button type="submit" style="padding: 2px;border-radius: 5px;background-color: darkgreen;width: 25%;margin: 10px;"><text style="font-size: 25px;font-family: sans-serif;font-weight: bold;color: white;">ADD</text></button>
+        </div>
+    </form>
+</body>
+<script>
+    function add(){
+        document.getElementById('press').style.display='none'
+        document.getElementById('add').style.display='block'
+    }
+    function cancel(){
+        document.getElementById('press').style.display='block'
+        document.getElementById('add').style.display='none'
+    }
+</script>
+</html>

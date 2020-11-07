@@ -1,0 +1,24 @@
+#header{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: black;
+}
+#data{
+    font-size: 25px;
+    font-family: sans-serif;
+    color: black;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th,td{
+    padding: 15px;
+    text-align: center;
+}
+#details tr:nth-child(even) {
+    background-color: white	;
+}
+#details tr:nth-child(odd) {
+    background-color: #98FB98;
+}
